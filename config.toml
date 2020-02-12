@@ -1,0 +1,14 @@
+[listen]
+  ip = "0.0.0.0"
+  port = 8080
+  url = "/webhook"
+  secretKey = 'YOUR_SECRET_KEY'
+
+[repo]
+  username = 'USERNAME'
+  token = 'TOKEN'
+  source = "REPOSITORY_URL"
+  blogApp = "hugo"
+  repoDir = "repo"
+  deployDir = "deploy"
+  deployName = "www"
