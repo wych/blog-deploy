@@ -21,8 +21,6 @@ class BlogBuildError(Exception):
 class Config:
     
     root_path: str      = None
-    listen_ip: str      = '0.0.0.0'
-    listen_port: int    = 8080
     listen_url: str     = '/'
     secret_key: bytes   = None
     source: str         = None
@@ -41,8 +39,6 @@ class Config:
 
 
         listen_conf         = toml_conf["listen"]
-        conf.listen_ip      = listen_conf['ip'] if listen_conf.get('ip') else cls.listen_ip
-        conf.listen_port    = listen_conf['port'] if listen_conf.get('port') else cls.listen_port
         conf.listen_url     = listen_conf['url'] if listen_conf.get('url') else cls.listen_url
         conf.secret_key     = bytes(listen_conf['secretKey'].encode('utf-8'))
 
@@ -83,7 +79,7 @@ class Repo:
         elif os.path.isdir(self.repo_dir) and os.listdir(self.repo_dir) == []:
             self.__clone()
         else:
-            raise RepoInitError("%s exists and not an empty directory!" % self.repo_dir)
+            raise RepoInitError("%s exists and not an empty directory or legitimate directory!" % self.repo_dir)
         return
 
     def __is_existed_repo(self) -> bool:

@@ -37,4 +37,4 @@ def verify_signature(data: bytes, secret_key: bytes):
     return signature
 
 if __name__ == '__main__':
-    app.run(host=conf.listen_ip, port=conf.listen_port, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)
